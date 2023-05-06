@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2790960250762892277
+--- !u!114 &-1977806520633515479
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 4
+  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grass_Pink
-  m_Shader: {fileID: 4800000, guid: 72e68f904ae08fc4299172cfb53712c6, type: 3}
+  m_Name: Bubble
+  m_Shader: {fileID: -6465566751694194690, guid: 28228deac10919b43adb65757ad4d67d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -35,10 +35,6 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BladeTexture:
-        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -58,10 +54,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _GrassMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -85,10 +77,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _WindMap:
-        m_Texture: {fileID: 2800000, guid: 2a80618a09ec0b44b9fbfb47279d4d98, type: 3}
-        m_Scale: {x: 0.01, y: 0.01}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -103,21 +91,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Vector1_434d8f6edb7f4e109dc7b47df03c0119: 0.1
+    - Vector1_53e4b2024ef54323864a72f98f5e1ffa: 0
+    - Vector1_689f7ceae4b946f38b5ff9bf84f2f023: 0.1
+    - Vector1_6e530d0ea7094cf48496d609411b7adc: 0.6
+    - Vector1_b534a4b300384ab0a0cab100a5d223fa: 0
+    - Vector1_cf86a053aa2c40e78a605292021f44c3: 3
     - _AlphaClip: 0
-    - _BendDelta: 0.15
-    - _BladeBendCurve: 1
-    - _BladeBendDistance: 0.39
-    - _BladeCurve: 2
-    - _BladeForward: 0.38
-    - _BladeHeight: 0.25
-    - _BladeHeightDelta: 0.05
-    - _BladeHeightMax: 5
-    - _BladeHeightMin: 2
-    - _BladeSegments: 3
-    - _BladeWidth: 0.015
-    - _BladeWidthDelta: 0.02
-    - _BladeWidthMax: 0.1
-    - _BladeWidthMin: 0.0496
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -126,16 +106,17 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _Disolve: 0.26
+    - _DisplacementStrength: 0
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GrassFalloff: 0.5
-    - _GrassThreshold: 0.158
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -143,21 +124,14 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TesselationFactor: 4
-    - _TessellationEdgeLength: 0.25
-    - _TessellationFactor: 4
-    - _TessellationGrassDistance: 2
-    - _WindFrequency: 0.0125
-    - _WindStrength: 0.5
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.9772253, g: 0, b: 1, a: 1}
-    - _Color: {r: 0.11764706, g: 0.9137255, b: 0.13333334, a: 1}
+    - Color_027e4586f058443ca29389a6ccbed930: {r: 0, g: 0.7374075, b: 3.482202, a: 0}
+    - Color_cf12b49411d94583a269f83e6981abd1: {r: 0, g: 2.089559, b: 6.498019, a: 0}
+    - Vector2_6d629b6a76b14f7b9f3bf64e1f22ccd1: {r: 0.73, g: 2.6, b: 0, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.5660378, g: 0.45540816, b: 0.32306874, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TipColor: {r: 1, g: 0.9906565, b: 0.60784316, a: 1}
-    - _WindDirection: {r: 1, g: 0, b: 0, a: 0}
-    - _WindVelocity: {r: 0.2, g: 0, b: 0.15, a: 0}
   m_BuildTextureStacks: []
