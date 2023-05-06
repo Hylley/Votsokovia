@@ -2,67 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove	: MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
+	CharacterController controller;
 
-    private CharacterController charController;
+	public float speed = 12f;
+	public float gravity = -9.81f;
+	public float jump =	1f;
 
-    [SerializeField] private AnimationCurve jumpFallOff;
-    [SerializeField] private float jumpMultiplier;
-    [SerializeField] private KeyCode jumpKey;
+	public Transform groundCheck;
+	public float groundDistance	= 0.4f;
+	public LayerMask groundMask;
 
+	Vector3	velocity;
+	bool isGrounded;
 
-    private bool isJumping;
+	void Start()
+	{
+		controller = GetComponent<CharacterController>();
+	}
 
-    private void Awake()
-    {
-        charController = GetComponent<CharacterController>();
-    }
+	// Update is called	once per frame
+	void Update()
+	{
+		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-    private void Update()
-    {
-        PlayerMovement();
-    }
+		if(isGrounded && velocity.y	< 0)
+		{
+			velocity.y = -2f;
+		}
 
-    private void PlayerMovement()
-    {
-        float horizInput = Input.GetAxis("Horizontal") * movementSpeed;
-        float vertInput = Input.GetAxis("Vertical") * movementSpeed;
+		float x	= Input.GetAxis("Horizontal");
+		float z	= Input.GetAxis("Vertical");
 
-        Vector3 forwardMovement = transform.forward * vertInput;
-        Vector3 rightMovement = transform.right * horizInput;
+		Vector3	move = transform.right * x + transform.forward * z;
 
-        charController.SimpleMove(forwardMovement + rightMovement);
+		controller.Move(move * speed * Time.deltaTime);
 
-        JumpInput();
+		if(Input.GetButtonDown("Jump") && isGrounded)
+		{
+			velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+		}
 
-    }
+		velocity.y += gravity *	Time.deltaTime;
 
-    private void JumpInput()
-    {
-        if(Input.GetKeyDown(jumpKey) && !isJumping)
-        {
-            isJumping = true;
-            StartCoroutine(JumpEvent());
-        }
-    }
+		controller.Move(velocity * Time.deltaTime);
+	}
 
-    private IEnumerator JumpEvent()
-    {
-        charController.slopeLimit = 90.0f;
-        float timeInAir = 0.0f;
+	// private	void JumpInput()
+	// {
+	//	if(Input.GetKeyDown(jumpKey) && !isJumping)
+	//	{
+	//		isJumping =	true;
+	//		// StartCoroutine(JumpEvent());
+	//	}
+	// }
 
-        do
-        {
-            float jumpForce = jumpFallOff.Evaluate(timeInAir);
-            charController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
-            timeInAir += Time.deltaTime;
-            yield return null;
-        } while (!charController.isGrounded && charController.collisionFlags != CollisionFlags.Above);
+	// private void	Jump()
+	// `
+	// {
+	//	charController.isGrounded
+	// }
 
-        charController.slopeLimit = 45.0f;
-        isJumping = false;
-    }
+	// private IEnumerator JumpEvent()
+	// {
+	//	   charController.slopeLimit = 90.0f;
+	//	   float timeInAir = 0.0f;
+
+	//	   do
+	//	   {
+	//		   float jumpForce = jumpFallOff.Evaluate(timeInAir);
+	//		   charController.Move(Vector3.up *	jumpForce *	jumpMultiplier * Time.deltaTime);
+	//		   timeInAir += Time.deltaTime;
+	//		   yield return	null;
+	//	   } while (!charController.isGrounded && charController.collisionFlags	!= CollisionFlags.Above);
+
+	//	   charController.slopeLimit = 45.0f;
+	//	   isJumping = false;
+	// }
 
 }
