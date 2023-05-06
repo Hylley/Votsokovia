@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    [SerializeField] private float mouseSensitivity;
+    public float mouseSensitivity;
 
-    [SerializeField] private Transform playerBody;
+    public Transform playerBody;
 
     private float xAxisClamp;
+    
+    [Space(7)]
+
+    public Transform hand;
+    public Transform equiped;
+    public float handItemLerpSpeed;
 
     private void Awake()
     {
@@ -25,6 +31,12 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         CameraRotation();
+
+        if(equiped != null)
+        {
+            equiped.position = Vector3.Lerp(equiped.position, hand.position, handItemLerpSpeed);
+            equiped.rotation = Quaternion.Lerp(equiped.rotation, transform.rotation, handItemLerpSpeed);
+        }
     }
 
     private void CameraRotation()

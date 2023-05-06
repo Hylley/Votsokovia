@@ -5,6 +5,12 @@ using UnityEngine;
 public class GameStatus : MonoBehaviour
 {
     public static GameStatus instance { get; private set; }
+    
+    // Status
+    public int health = 100;
+    public int sickles;
+    public int jellies;
+    public float distance;
 
     void Start()
     {
@@ -18,9 +24,19 @@ public class GameStatus : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int damage)
     {
-        
+        if(health - damage <= 0)
+        {
+            GameOver();
+            return;
+        }
+
+        health -= damage;
+    }
+
+    void GameOver()
+    {
+        Debug.Log("Game over");
     }
 }
