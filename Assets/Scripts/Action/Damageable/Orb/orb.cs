@@ -5,6 +5,7 @@ using UnityEngine;
 public class orb : MonoBehaviour, IDamageable
 {
 	public int health;
+	public float moveSpeed;
 	public healthWorldSpaceUI healthBar;
 
 	public Renderer	rend;
@@ -19,6 +20,8 @@ public class orb : MonoBehaviour, IDamageable
 	float pi = 3.14f;
 	float time;
 
+	[HideInInspector] public Transform follow;
+
 	 void Start()
 	{
 		//rend = GetComponent<Renderer>();
@@ -31,6 +34,7 @@ public class orb : MonoBehaviour, IDamageable
 	// Update is called	once per frame
 	void Update()
 	{
+		rend.material.SetFloat("_Disolve", pulse() * .37f);
 		if(damaged)
 		{
 			rend.material.SetColor(
@@ -56,7 +60,11 @@ public class orb : MonoBehaviour, IDamageable
 			);
 		}
 
-		rend.material.SetFloat("_Disolve", pulse() * .37f);
+		if(follow != null)
+		{
+			transform.position = Vector3.MoveTowards(transform.position, follow.position, moveSpeed * .01f);
+		}
+
 		time += Time.deltaTime;
 	}
 	public void	TakeDamage(int damage)
