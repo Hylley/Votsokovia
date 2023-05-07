@@ -6,7 +6,18 @@ public class orbEyes : MonoBehaviour
 {
     public orb parent;
     public int insistDuration;
+    public float dealyBetweenAttacks;
     bool playerInSight;
+    bool canAttack = true;
+
+    void Update()
+    {
+        if(playerInSight && parent.follow && canAttack)
+        {
+            GameStatus.instance.TakeDamage(parent.baseDamage);
+            StartCoroutine(Wait());
+        }
+    }
 
     void OnTriggerEnter(Collider hit)
 	{
@@ -34,5 +45,12 @@ public class orbEyes : MonoBehaviour
             yield break;
 
         parent.follow = null;
+    }
+
+    IEnumerator Wait()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(dealyBetweenAttacks);
+        canAttack = true;
     }
 }

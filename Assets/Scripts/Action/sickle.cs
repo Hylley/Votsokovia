@@ -62,6 +62,7 @@ public class sickle	: MonoBehaviour
 			anim.Play("attack_1");
 		}
 
+		playerVision.shakeAmount = .05f;
 		playerVision.shakeDuration = .3f;
 		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length * .7f);
 

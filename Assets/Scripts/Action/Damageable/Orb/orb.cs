@@ -6,6 +6,9 @@ public class orb : MonoBehaviour, IDamageable
 {
 	public int health;
 	public float moveSpeed;
+	public int baseDamage;
+	bool playerInCollision;
+	[Space(7)]
 	public healthWorldSpaceUI healthBar;
 
 	public Renderer	rend;
@@ -62,7 +65,7 @@ public class orb : MonoBehaviour, IDamageable
 
 		if(follow != null)
 		{
-			transform.position = Vector3.MoveTowards(transform.position, follow.position, moveSpeed * .01f);
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(follow.position.x, transform.position.y, follow.position.z), moveSpeed * .01f);
 		}
 
 		time += Time.deltaTime;

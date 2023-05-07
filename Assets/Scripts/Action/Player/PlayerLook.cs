@@ -20,8 +20,8 @@ public class PlayerLook : MonoBehaviour
     	// How long the object should shake for.
 	public float shakeDuration = 0f;
 	// Amplitude of the shake. A larger value shakes the camera harder.
-	public float shakeAmount = 0.7f;
-	public float decreaseFactor = 1.0f;
+	public float shakeAmount = .05f;
+	public float decreaseFactor = 2f;
     Vector3 originalPos;
 
     private void Awake()
