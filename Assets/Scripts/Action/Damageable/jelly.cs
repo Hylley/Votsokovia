@@ -33,6 +33,7 @@ public class jelly : MonoBehaviour, IDamageable
 
     void Die()
     {
+        GameStatus.instance.jellies++;
         Destroy(gameObject);
     }
 }
