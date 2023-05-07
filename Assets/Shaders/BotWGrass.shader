@@ -9,7 +9,7 @@ Shader "Custom/BotWGrass"
 		_BladeWidthMin("Blade Width (Min)", Range(0, 0.1)) = 0.02
 		_BladeWidthMax("Blade Width (Max)", Range(0, 0.1)) = 0.05
 		_BladeHeightMin("Blade Height (Min)", Range(0, 2)) = 0.1
-		_BladeHeightMax("Blade Height (Max)", Range(0, 5)) = 0.2
+		_BladeHeightMax("Blade Height (Max)", Range(0, 10)) = 0.2
 
 		_BladeSegments("Blade Segments", Range(1, 10)) = 3
 		_BladeBendDistance("Blade Forward Amount", Float) = 0.38

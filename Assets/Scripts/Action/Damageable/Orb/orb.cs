@@ -6,6 +6,8 @@ public class orb : MonoBehaviour, IDamageable
 {
 	public int health;
 	public float moveSpeed;
+	Vector3 randomTarget;
+	int randomTargetRange = 20;
 	public int baseDamage;
 	bool playerInCollision;
 	[Space(7)]
@@ -66,6 +68,16 @@ public class orb : MonoBehaviour, IDamageable
 		if(follow != null)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(follow.position.x, transform.position.y, follow.position.z), moveSpeed * .01f);
+		}
+		else
+		{
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(randomTarget.x, transform.position.y, randomTarget.z), moveSpeed * .01f);
+		}
+
+		if((int)time % 10 == 0)
+		{
+			time++;
+			randomTarget = transform.position + new Vector3(Random.Range(-randomTargetRange, randomTargetRange), 0, Random.Range(-randomTargetRange, randomTargetRange));
 		}
 
 		time += Time.deltaTime;
