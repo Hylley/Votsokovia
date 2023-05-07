@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equiped: 0
+  playerVision: {fileID: 0}
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 64
   baseDamage: 10
   durability: 10
 --- !u!95 &2998730891214228895
@@ -81,7 +85,6 @@ GameObject:
   - component: {fileID: 1101842195334224711}
   - component: {fileID: 1803796907061131571}
   - component: {fileID: 3495824184901662633}
-  - component: {fileID: 7041016168751516010}
   m_Layer: 6
   m_Name: Model
   m_TagString: Stickle
@@ -154,17 +157,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7041016168751516010
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7046191339769352054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: 86c9978c9216a3c419840395a2cbaf53, type: 3}

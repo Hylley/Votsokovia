@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     public float mouseSensitivity;
+    public float hitDistance;
 
     public Transform playerBody;
 
@@ -15,12 +16,24 @@ public class PlayerLook : MonoBehaviour
     public Transform hand;
     public Transform equiped;
     public float handItemLerpSpeed;
+    [Space(7)]
+    	// How long the object should shake for.
+	public float shakeDuration = 0f;
+	// Amplitude of the shake. A larger value shakes the camera harder.
+	public float shakeAmount = 0.7f;
+	public float decreaseFactor = 1.0f;
+    Vector3 originalPos;
 
     private void Awake()
     {
         LockCursor();
         xAxisClamp = 0.0f;
     }
+
+    void OnEnable()
+	{
+		originalPos = transform.localPosition;
+	}
 
 
     private void LockCursor()
@@ -37,6 +50,18 @@ public class PlayerLook : MonoBehaviour
             equiped.position = Vector3.Lerp(equiped.position, hand.position, handItemLerpSpeed);
             equiped.rotation = Quaternion.Lerp(equiped.rotation, transform.rotation, handItemLerpSpeed);
         }
+
+        if (shakeDuration > 0)
+		{
+			transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+			
+			shakeDuration -= Time.deltaTime * decreaseFactor;
+		}
+		else
+		{
+			shakeDuration = 0f;
+			transform.localPosition = originalPos;
+		}
     }
 
     private void CameraRotation()
