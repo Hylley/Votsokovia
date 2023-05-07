@@ -37,6 +37,7 @@ public class GameStatus : MonoBehaviour
 
     void GameOver()
     {
+        GameStatus.instance.jellies++;
         Debug.Log("Game over");
     }
 }

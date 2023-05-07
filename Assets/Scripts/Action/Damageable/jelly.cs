@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class jelly : MonoBehaviour, IDamageable
 {
+    Animator anim;
+
     public int health;
     public healthWorldSpaceUI healthBar;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         healthBar.slider.maxValue = health;
         healthBar.slider.value = health;
     }
@@ -24,6 +28,7 @@ public class jelly : MonoBehaviour, IDamageable
         health -= damage;
         healthBar.slider.value = health;
         healthBar.Shake();
+        anim.Play("hit");
     }
 
     void Die()
