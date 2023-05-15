@@ -47,11 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equiped: 0
+  canBreak: 1
   playerVision: {fileID: 0}
   attackLayer:
     serializedVersion: 2
     m_Bits: 64
-  baseDamage: 10
+  baseDamage: 1
   durability: 10
 --- !u!95 &2998730891214228895
 Animator:

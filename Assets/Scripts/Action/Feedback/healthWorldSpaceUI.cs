@@ -8,6 +8,7 @@ public class healthWorldSpaceUI	: MonoBehaviour
 	Animator anim;
 
 	public CanvasGroup canvas;
+	public bool showUI = true;
 	bool show;
 	public Slider slider;
 
@@ -18,6 +19,9 @@ public class healthWorldSpaceUI	: MonoBehaviour
 
 	void Update()
 	{
+		if(!showUI)
+			return;
+
 		if(show	&& canvas.alpha	< 1)
 		{
 			canvas.alpha += 10 * Time.deltaTime;
@@ -26,7 +30,7 @@ public class healthWorldSpaceUI	: MonoBehaviour
 
 	public void	Shake()
 	{
-		show = true;
+		show = true && showUI;
 
 		anim.Play("shake");
 	}

@@ -4,49 +4,45 @@ using UnityEngine;
 
 public class PlayerMove	: MonoBehaviour
 {
-	CharacterController controller;
+	Rigidbody rb;
 
+	Vector3 direction;
 	public float speed = 12f;
-	public float gravity = -9.81f;
-	public float jump =	1f;
 
-	public Transform groundCheck;
-	public float groundDistance	= 0.4f;
-	public LayerMask groundMask;
+	public AudioSource walkSound;
+	// public float jump =	1f;
+
+	// public Transform groundCheck;
+	// public float groundDistance	= 0.4f;
+	// public LayerMask groundMask;
 
 	Vector3	velocity;
-	bool isGrounded;
+	// bool isGrounded;
 
 	void Start()
 	{
-		controller = GetComponent<CharacterController>();
+		rb = GetComponent<Rigidbody>();
 	}
 
-	// Update is called	once per frame
-	void Update()
+	void FixedUpdate()
 	{
-		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-		if(isGrounded && velocity.y	< 0)
-		{
-			velocity.y = -2f;
-		}
+		// isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
 		float x	= Input.GetAxis("Horizontal");
 		float z	= Input.GetAxis("Vertical");
 
-		Vector3	move = transform.right * x + transform.forward * z;
+		direction = (transform.forward * z) + (transform.right * x);
+		rb.velocity = direction * speed;
+		rb.angularVelocity = Vector3.zero;
 
-		controller.Move(move * speed * Time.deltaTime);
-
-		if(Input.GetButtonDown("Jump") && isGrounded)
+		if((x != 0 || z != 0) && !walkSound.isPlaying)
 		{
-			velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+			walkSound.Play();
 		}
-
-		velocity.y += gravity *	Time.deltaTime;
-
-		controller.Move(velocity * Time.deltaTime);
+		else if(x == 0 && z == 0 && walkSound.isPlaying)
+		{
+			walkSound.Stop();
+		}
 	}
 
 	// private	void JumpInput()

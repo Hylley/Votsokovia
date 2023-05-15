@@ -5,6 +5,7 @@ using UnityEngine;
 public class sickle	: MonoBehaviour
 {
 	public bool	equiped;
+	public bool canBreak = true;
 	public PlayerLook playerVision;
 	public LayerMask attackLayer;
 	bool attacking = false;
@@ -37,6 +38,9 @@ public class sickle	: MonoBehaviour
 					return;
 
 				damageableObject.TakeDamage(baseDamage);
+
+				if(!canBreak)
+					return;
 
 				if(durability - 1 <= 0)
 				{

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class faceToCamera : MonoBehaviour
 {
-    public Transform _camera;
+    public Transform target;
 
     void Update()
     {
-        transform.forward = _camera.forward;
-        //transform.LookAt(_camera.position);        
+        // transform.forward = target.position;
+
+        transform.LookAt(target.position);        
     }
 }

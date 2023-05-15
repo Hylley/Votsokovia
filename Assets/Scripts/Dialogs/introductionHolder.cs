@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class introductionHolder	: MonoBehaviour
 {
 	int stage = 0;
+	public AudioSource keyPressAudio;
 	delegate void callback();
 
 	[Header("Starter dialog")]
@@ -63,6 +65,9 @@ public class introductionHolder	: MonoBehaviour
 			foreach(char c in text)	
 			{
 				displayInput.text += c;
+				if(c != ' ')
+					keyPressAudio.Play();
+
 				yield return new WaitForSeconds(timeBetweenCharacters);
 			}
 
@@ -89,6 +94,6 @@ public class introductionHolder	: MonoBehaviour
 
 	public void Finish()
 	{
-		Debug.Log("Finished");
+		SceneManager.LoadScene(1, LoadSceneMode.Single);
 	}
 }
