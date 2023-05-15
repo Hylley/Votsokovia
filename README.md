@@ -13,6 +13,15 @@ We ask that you remain focused on your assigned tasks and avoid involvement in m
 
 Glory to the National Dictatorial Union of Votsokovia, comrade.
 
+## Screenshots
+
+![Screenshot 1/5](https://img.itch.zone/aW1hZ2UvMjA2NTE4NC8xMjE0MzY3MC5wbmc=/original/l%2BAYjp.png)
+![Screenshot 2/5](https://img.itch.zone/aW1hZ2UvMjA2NTE4NC8xMjE0MzY3My5wbmc=/original/lU9jfd.png)
+![Screenshot 3/5](https://img.itch.zone/aW1hZ2UvMjA2NTE4NC8xMjE0MzY3NC5wbmc=/original/fJb0Fu.png)
+![Screenshot 4/5](https://img.itch.zone/aW1hZ2UvMjA2NTE4NC8xMjE0MzY3Ni5wbmc=/original/8tsPLI.png)
+![Screenshot 5/5](https://img.itch.zone/aW1hZ2UvMjA2NTE4NC8xMjE0MzY4NS5wbmc=/original/VkZXmU.png)
+
+
 ## Gameplay
 
 [![VOTSOKOVIA GAMEPLAY](https://i.imgur.com/cbdcYj3.png)](https://youtu.be/qlv_Mk-1zbE)
