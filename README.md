@@ -1,7 +1,7 @@
 ![Banner](https://img.itch.zone/aW1nLzEyMTQzNzUzLnBuZw==/original/tG4yB%2B.png)
 # Votsokovia
 
-Brazilian 3D analog horror game made during the space of 7 days for the [Ctrl Alt Jam #2](https://itch.io/jam/ctrl-alt-jam-2), under the theme: **Conflict and Duality**.
+Brazilian analog 3D horror game made within a 7 days period for the [Ctrl Alt Jam #2](https://itch.io/jam/ctrl-alt-jam-2), under the theme: **Conflict and Duality**.
 
 ## Synopsis
 
